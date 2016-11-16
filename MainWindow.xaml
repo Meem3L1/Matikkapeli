@@ -5,106 +5,135 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Matikkapeli"
         mc:Ignorable="d"
-        Title="Matikkapeli" 
-        Height="470" 
+        Title="Matikkapeli - Emil Pirinen 2016"
+        Height="490"
+        MinHeight="490"
         Width="530"
+        MinWidth="530"
         Background="AntiqueWhite"
-        ResizeMode="CanMinimize">
-    <Grid>
-        <StackPanel Margin="15">
+        ResizeMode="CanResize">
+    <Grid x:Name="main_grid">
+        <Menu x:Name="main_menu" IsMainMenu="True" FontSize="14" FontWeight="SemiBold" BorderBrush="Black" BorderThickness="0,0,0,1" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+            <MenuItem Header="_Valikko">
+                <MenuItem Header="_Summa" Click="MenuItem_Click_summa"/>
+                <MenuItem Header="_Erotus" Click="MenuItem_Click_erotus"/>
+                <MenuItem Header="_Kerto" Click="MenuItem_Click_kerto"/>
+                <MenuItem Header="_Jako" Click="MenuItem_Click_jako"/>
+                <MenuItem Header="S_atunnainen" Click="MenuItem_Click_random"/>
+                <Separator />
+                <MenuItem Header="S_ulje" FontWeight="Normal" Click="MenuItem_Click_sulje"/>
+            </MenuItem>
+            <MenuItem Header="_Asetukset">
+                <MenuItem x:Name="menuitem_muokkaus" FontSize="12" Header="Salli _muokkaus tarkistuksen jälkeen" IsCheckable="True" Checked="MenuItem_Click_asetukset_muokkaus" Unchecked="MenuItem_Click_asetukset_muokkaus"/>
+                <MenuItem FontSize="12" Header="_Vaikeustaso">
+                    <MenuItem Header="_Helppo" Click="vaikeustaso_helppo"/>
+                    <MenuItem Header="_Keskitaso" Click="vaikeustaso_keskitaso"/>
+                    <MenuItem Header="V_aikea" Click="vaikeustaso_vaikea"/>
+                </MenuItem>
+                <MenuItem FontSize="12" Header="_Taustaväri">
+                    <MenuItem Header="Haamun valkoinen" Click="MenuItem_Click_vari_haamunvalkoinen"/>
+                    <MenuItem Header="Antiikin valkoinen" Click="MenuItem_Click_vari_antiikinvalkoinen"/>
+                    <MenuItem Header="Beige" Click="MenuItem_Click_vari_beige"/>
+                    <MenuItem Header="Akvamariini" Click="MenuItem_Click_vari_akvamariini"/>
+                    <MenuItem Header="Pinkki" Click="MenuItem_Click_vari_pinkki"/>
+                    <MenuItem Header="Vaalean vihreä" Click="MenuItem_Click_vari_vaaleanvihrea"/>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <StackPanel Margin="15,30,15,15">
             <DockPanel Margin="0,0,0,10">
                 <!--Johdanto-->
-                <Label x:Name="label_johdanto" FontSize="16" Content="Laske oikeat vastaukset." FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <Label x:Name="label_johdanto" FontFamily="Tahoma" FontSize="18" Content="Laske oikeat vastaukset." FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             </DockPanel>
-            <DockPanel Margin="15,0">
+            <DockPanel Margin="15,0" HorizontalAlignment="Center">
                 <!--1. kysymys-->
-                <Label x:Name="label_1" Width="50" FontSize="14" Content="1." FontWeight="Bold" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
-                <Label x:Name="label_kys1" Width="70" FontSize="14" Content="1 x 2" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
+                <Label x:Name="label_1" Width="50" FontSize="14" Content="1." FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Left"/>
+                <Label x:Name="label_kys1" Width="90" FontSize="14" Content="1 x 2" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
                 <Label x:Name="label_yht1" Width="25" FontSize="14" Content="=" HorizontalAlignment="Left"/>
                 <TextBox x:Name="textBox_1" PreviewTextInput="textBox_vuosi_PreviewTextInput" MaxLength="3" Height="20" TextWrapping="Wrap" Text="" Width="160" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
-                <Label x:Name="label_vast1" Width="70" FontSize="14" Content="?" HorizontalAlignment="Right" HorizontalContentAlignment="Left"/>
+                <Label x:Name="label_vast1" Width="70" FontSize="14" Content="?" HorizontalAlignment="Right" HorizontalContentAlignment="Center"/>
             </DockPanel>
-            <DockPanel Margin="15,0">
+            <DockPanel Margin="15,0" HorizontalAlignment="Center">
                 <!--1. kysymys-->
-                <Label x:Name="label_2" Width="50" FontSize="14" Content="2." FontWeight="Bold" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
-                <Label x:Name="label_kys2" Width="70" FontSize="14" Content="1 x 2" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
+                <Label x:Name="label_2" Width="50" FontSize="14" Content="2." FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Left"/>
+                <Label x:Name="label_kys2" Width="90" FontSize="14" Content="1 x 2" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
                 <Label x:Name="label_yht2" Width="25" FontSize="14" Content="=" HorizontalAlignment="Left"/>
                 <TextBox x:Name="textBox_2" PreviewTextInput="textBox_vuosi_PreviewTextInput" MaxLength="3" Height="20" TextWrapping="Wrap" Text="" Width="160" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
-                <Label x:Name="label_vast2" Width="70" FontSize="14" Content="?" HorizontalAlignment="Right" HorizontalContentAlignment="Left"/>
+                <Label x:Name="label_vast2" Width="70" FontSize="14" Content="?" HorizontalAlignment="Right" HorizontalContentAlignment="Center"/>
             </DockPanel>
-            <DockPanel Margin="15,0">
+            <DockPanel Margin="15,0" HorizontalAlignment="Center">
                 <!--1. kysymys-->
-                <Label x:Name="label_3" Width="50" FontSize="14" Content="3." FontWeight="Bold" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
-                <Label x:Name="label_kys3" Width="70" FontSize="14" Content="1 x 2" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
+                <Label x:Name="label_3" Width="50" FontSize="14" Content="3." FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Left"/>
+                <Label x:Name="label_kys3" Width="90" FontSize="14" Content="1 x 2" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
                 <Label x:Name="label_yht3" Width="25" FontSize="14" Content="=" HorizontalAlignment="Left"/>
                 <TextBox x:Name="textBox_3" PreviewTextInput="textBox_vuosi_PreviewTextInput" MaxLength="3" Height="20" TextWrapping="Wrap" Text="" Width="160" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
-                <Label x:Name="label_vast3" Width="70" FontSize="14" Content="?" HorizontalAlignment="Right" HorizontalContentAlignment="Left"/>
+                <Label x:Name="label_vast3" Width="70" FontSize="14" Content="?" HorizontalAlignment="Right" HorizontalContentAlignment="Center"/>
             </DockPanel>
-            <DockPanel Margin="15,0">
+            <DockPanel Margin="15,0" HorizontalAlignment="Center">
                 <!--1. kysymys-->
-                <Label x:Name="label_4" Width="50" FontSize="14" Content="4." FontWeight="Bold" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
-                <Label x:Name="label_kys4" Width="70" FontSize="14" Content="1 x 2" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
+                <Label x:Name="label_4" Width="50" FontSize="14" Content="4." FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Left"/>
+                <Label x:Name="label_kys4" Width="90" FontSize="14" Content="1 x 2" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
                 <Label x:Name="label_yht4" Width="25" FontSize="14" Content="=" HorizontalAlignment="Left"/>
                 <TextBox x:Name="textBox_4" PreviewTextInput="textBox_vuosi_PreviewTextInput" MaxLength="3" Height="20" TextWrapping="Wrap" Text="" Width="160" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
-                <Label x:Name="label_vast4" Width="70" FontSize="14" Content="?" HorizontalAlignment="Right" HorizontalContentAlignment="Left"/>
+                <Label x:Name="label_vast4" Width="70" FontSize="14" Content="?" HorizontalAlignment="Right" HorizontalContentAlignment="Center"/>
             </DockPanel>
-            <DockPanel Margin="15,0">
+            <DockPanel Margin="15,0" HorizontalAlignment="Center">
                 <!--1. kysymys-->
-                <Label x:Name="label_5" Width="50" FontSize="14" Content="5." FontWeight="Bold" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
-                <Label x:Name="label_kys5" Width="70" FontSize="14" Content="1 x 2" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
+                <Label x:Name="label_5" Width="50" FontSize="14" Content="5." FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Left"/>
+                <Label x:Name="label_kys5" Width="90" FontSize="14" Content="1 x 2" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
                 <Label x:Name="label_yht5" Width="25" FontSize="14" Content="=" HorizontalAlignment="Left"/>
                 <TextBox x:Name="textBox_5" PreviewTextInput="textBox_vuosi_PreviewTextInput" MaxLength="3" Height="20" TextWrapping="Wrap" Text="" Width="160" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
-                <Label x:Name="label_vast5" Width="70" FontSize="14" Content="?" HorizontalAlignment="Right" HorizontalContentAlignment="Left"/>
+                <Label x:Name="label_vast5" Width="70" FontSize="14" Content="?" HorizontalAlignment="Right" HorizontalContentAlignment="Center"/>
             </DockPanel>
-            <DockPanel Margin="15,0">
+            <DockPanel Margin="15,0" HorizontalAlignment="Center">
                 <!--1. kysymys-->
-                <Label x:Name="label_6" Width="50" FontSize="14" Content="6." FontWeight="Bold" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
-                <Label x:Name="label_kys6" Width="70" FontSize="14" Content="1 x 2" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
+                <Label x:Name="label_6" Width="50" FontSize="14" Content="6." FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Left"/>
+                <Label x:Name="label_kys6" Width="90" FontSize="14" Content="1 x 2" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
                 <Label x:Name="label_yht6" Width="25" FontSize="14" Content="=" HorizontalAlignment="Left"/>
                 <TextBox x:Name="textBox_6" PreviewTextInput="textBox_vuosi_PreviewTextInput" MaxLength="3" Height="20" TextWrapping="Wrap" Text="" Width="160" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
-                <Label x:Name="label_vast6" Width="70" FontSize="14" Content="?" HorizontalAlignment="Right" HorizontalContentAlignment="Left"/>
+                <Label x:Name="label_vast6" Width="70" FontSize="14" Content="?" HorizontalAlignment="Right" HorizontalContentAlignment="Center"/>
             </DockPanel>
-            <DockPanel Margin="15,0">
+            <DockPanel Margin="15,0" HorizontalAlignment="Center">
                 <!--1. kysymys-->
-                <Label x:Name="label_7" Width="50" FontSize="14" Content="7." FontWeight="Bold" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
-                <Label x:Name="label_kys7" Width="70" FontSize="14" Content="1 x 2" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
+                <Label x:Name="label_7" Width="50" FontSize="14" Content="7." FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Left"/>
+                <Label x:Name="label_kys7" Width="90" FontSize="14" Content="1 x 2" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
                 <Label x:Name="label_yht7" Width="25" FontSize="14" Content="=" HorizontalAlignment="Left"/>
                 <TextBox x:Name="textBox_7" PreviewTextInput="textBox_vuosi_PreviewTextInput" MaxLength="3" Height="20" TextWrapping="Wrap" Text="" Width="160" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
-                <Label x:Name="label_vast7" Width="70" FontSize="14" Content="?" HorizontalAlignment="Right" HorizontalContentAlignment="Left"/>
+                <Label x:Name="label_vast7" Width="70" FontSize="14" Content="?" HorizontalAlignment="Right" HorizontalContentAlignment="Center"/>
             </DockPanel>
-            <DockPanel Margin="15,0">
+            <DockPanel Margin="15,0" HorizontalAlignment="Center">
                 <!--1. kysymys-->
-                <Label x:Name="label_8" Width="50" FontSize="14" Content="8." FontWeight="Bold" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
-                <Label x:Name="label_kys8" Width="70" FontSize="14" Content="1 x 2" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
+                <Label x:Name="label_8" Width="50" FontSize="14" Content="8." FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Left"/>
+                <Label x:Name="label_kys8" Width="90" FontSize="14" Content="1 x 2" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
                 <Label x:Name="label_yht8" Width="25" FontSize="14" Content="=" HorizontalAlignment="Left"/>
                 <TextBox x:Name="textBox_8" PreviewTextInput="textBox_vuosi_PreviewTextInput" MaxLength="3" Height="20" TextWrapping="Wrap" Text="" Width="160" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
-                <Label x:Name="label_vast8" Width="70" FontSize="14" Content="?" HorizontalAlignment="Right" HorizontalContentAlignment="Left"/>
+                <Label x:Name="label_vast8" Width="70" FontSize="14" Content="?" HorizontalAlignment="Right" HorizontalContentAlignment="Center"/>
             </DockPanel>
-            <DockPanel Margin="15,0">
+            <DockPanel Margin="15,0" HorizontalAlignment="Center">
                 <!--1. kysymys-->
-                <Label x:Name="label_9" Width="50" FontSize="14" Content="9." FontWeight="Bold" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
-                <Label x:Name="label_kys9" Width="70" FontSize="14" Content="1 x 2" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
+                <Label x:Name="label_9" Width="50" FontSize="14" Content="9." FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Left"/>
+                <Label x:Name="label_kys9" Width="90" FontSize="14" Content="1 x 2" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
                 <Label x:Name="label_yht9" Width="25" FontSize="14" Content="=" HorizontalAlignment="Left"/>
                 <TextBox x:Name="textBox_9" PreviewTextInput="textBox_vuosi_PreviewTextInput" MaxLength="3" Height="20" TextWrapping="Wrap" Text="" Width="160" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
-                <Label x:Name="label_vast9" Width="70" FontSize="14" Content="?" HorizontalAlignment="Right" HorizontalContentAlignment="Left"/>
+                <Label x:Name="label_vast9" Width="70" FontSize="14" Content="?" HorizontalAlignment="Right" HorizontalContentAlignment="Center"/>
             </DockPanel>
-            <DockPanel Margin="15,0">
+            <DockPanel Margin="15,0" HorizontalAlignment="Center">
                 <!--1. kysymys-->
-                <Label x:Name="label_10" Width="50" FontSize="14" Content="10." FontWeight="Bold" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
-                <Label x:Name="label_kys10" Width="70" FontSize="14" Content="1 x 2" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
+                <Label x:Name="label_10" Width="50" FontSize="14" Content="10." FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Left"/>
+                <Label x:Name="label_kys10" Width="90" FontSize="14" Content="1 x 2" HorizontalContentAlignment="Right" HorizontalAlignment="Left"/>
                 <Label x:Name="label_yht10" Width="25" FontSize="14" Content="=" HorizontalAlignment="Left"/>
                 <TextBox x:Name="textBox_10" PreviewTextInput="textBox_vuosi_PreviewTextInput" MaxLength="3" Height="20" TextWrapping="Wrap" Text="" Width="160" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
-                <Label x:Name="label_vast10" Width="70" FontSize="14" Content="?" HorizontalAlignment="Right" HorizontalContentAlignment="Left"/>
+                <Label x:Name="label_vast10" Width="70" FontSize="14" Content="?" HorizontalAlignment="Right" HorizontalContentAlignment="Center"/>
             </DockPanel>
             <DockPanel HorizontalAlignment="Center" Margin="0,20,0,0">
                 <!--Nappulat-->
-                <Button x:Name="button_tarkista" Click="button_tarkista_Click" Width="135" Margin="10,3" HorizontalAlignment="Left" Content="Tarkista"/>
-                <Button x:Name="button_oikeat" Click="button_oikeat_Click" Width="135" Margin="10,3" HorizontalAlignment="Left" Content="Näytä oikeat"/>
-                <Button x:Name="button_uudestaan" Click="button_uudestaan_Click" Width="135" Margin="10,3" HorizontalAlignment="Left" Content="Uudestaan"/>
+                <Button x:Name="button_tarkista" Click="button_tarkista_Click" Width="135" Height="25" Margin="10,3" HorizontalAlignment="Left" Content="Tarkista"/>
+                <Button x:Name="button_oikeat" Click="button_oikeat_Click" Width="135" Height="25" Margin="10,3" HorizontalAlignment="Left" Content="Näytä oikeat"/>
+                <Button x:Name="button_uudestaan" Click="button_uudestaan_Click" Width="135" Height="25" Margin="10,3" HorizontalAlignment="Left" Content="Uudestaan"/>
             </DockPanel>
             <DockPanel>
                 <!--Pistemäärä-->
-                <Label x:Name="label_pisteet" Content="" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label x:Name="label_pisteet" Content="" FontFamily="Tahoma" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </DockPanel>
         </StackPanel>
     </Grid>
