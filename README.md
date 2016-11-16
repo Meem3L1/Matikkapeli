@@ -4,4 +4,6 @@ Harjoitustyön pohjalta tehty graafisen käyttöliittymän omaava sovellus. C# j
 Vapaasti käytettävissä / Free to use
 
 
-![Screenshot](http://i.imgur.com/fZTAkgF.png)
+![Screenshot](http://i.imgur.com/LLq9ci5.png)
+
+
